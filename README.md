@@ -28,3 +28,24 @@
 - 匹配指定类的所有方法 execution(* com.evan.service.UserService.*(..))
 - 匹配实现特定接口所有类方法execution(* com.evan.dao.GenericDAO+.*(..))
 - 匹配所有save开头的方法execution(\*save\*(..))
+
+### @Around环绕通知
+
+* around方法的返回值就是目标代理方法执行返回值
+* 参数为ProceedingJoinPoint可以调用拦截目标方法执行
+``如果不调用ProcessdingJoinPoint的proceed方法，那么目标方法就被拦截类``
+
+### @AfterThrowing异常抛出通知
+
+* 通过设置throwing属性，可以设置发送异常对象参数
+* 配合环绕通知做事务操作
+
+### @After最终通知
+
+* 相当于finally
+
+### 通过@Pointcut为切点命名
+
+* 对于重复的切点可以使用@Ponitcut进行定义
+* 切点方法：private void 无参数方法，方法名为切点名
+* 当通知多个切点时，可以使用||进行连接
